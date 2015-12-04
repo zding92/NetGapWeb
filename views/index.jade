@@ -1,0 +1,112 @@
+doctype html
+html
+  head
+    title= title
+    
+    <script src="/Lib/jquery/jquery.min.js"></script>
+    <link href="/Lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/index.css" rel="stylesheet">
+    <script src="/Lib/bootstrap/bootstrap.min.js"></script>
+    
+
+      
+  body
+    div.
+      <nav class="navbar navbar-inverse navbar-fixed-top"> 
+        <div class="container"> 
+          <!-- Brand and toggle get grouped for better mobile display --> 
+          <div class="navbar-header"> 
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
+          <a class="navbar-brand" href="./">Net Gap</a> 
+          </div> 
+          <!-- Collect the nav links, forms, and other content for toggling --> 
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+          <ul class="nav navbar-nav"> 
+            <li class="active"><a href="/">Index <span class="sr-only">(current)</span></a></li> 
+            <li><a href="/view">Hardware View</a></li>
+            <li><a href="#">Hardware Control</a></li> 
+          </ul> 
+          <ul class="nav navbar-nav navbar-right">
+            <li class="headUserName">UserName</li> 
+            <li><img alt="userIcon" src="/img/userIcon1.jpg"></li>
+          </ul> 
+          </div>
+          <!-- /.navbar-collapse --> 
+        </div>
+        <!-- /.container-fluid -->            
+      </nav>
+    div.carouselDiv
+      div.carousel.slide#indexCarousel
+        //轮播（Carousel）指标
+        ol.carousel-indicators
+          - var cnt = 0;
+          - for(cnt=0;cnt<3;cnt++)
+            - if(cnt==0)
+              li.carouselPointer.active(data-target="#indexCarousel",data-slide-to=cnt)         
+            - else
+              li.carouselPointer(data-target="#indexCarousel",data-slide-to=cnt)
+        //轮播（Carousel）项目
+        div.carousel-inner
+          - var carouselAlts = ["First Slide","Second Slide","Third Slide"]
+          - var carouselFiles = ["/img/carousel1.jpg","/img/carousel2.jpg","/img/carousel3.jpg"]
+          - var cnt = 0
+          - for (cnt=0;cnt<3;cnt++)
+            - if (cnt==0)
+              div.active.item
+                img(src=carouselFiles[cnt],alt=carouselFiles[cnt])  
+            - else  
+              div.item
+                img(src=carouselFiles[cnt],alt=carouselFiles[cnt])
+        //轮播（Carousel）导航
+        a.carousel-control.left(href="#indexCarousel", data-slide="prev")
+          &lsaquo;
+        a.carousel-control.right(href="#indexCarousel", data-slide="next")
+          &rsaquo;
+          
+     
+     div.container
+      div.row.hardwareSpe   
+        div.col-md-4.hardwareSpe1
+          img(src="/img/net.png",style="height:100px")
+          h2 千兆以太网
+          p 千兆以太网以高效、高速、高性能为特点，已经广泛应用在金融、商业、教育、政府机关及厂矿企业等行业。
+            |千兆以太网已经发展成为主流网络技术。大到成千上万人的大型企业，小到几十人的中小型企业，在建设企业局域网时都会把千兆以太网技术作为首选的高速网络技术。千兆以太网技术甚至正在取代ATM技术，成为城域网建设的主力军。
+            
+        div.col-md-4
+          img(src="/img/cyclone4.jpg",style="height:100px")
+          h2 FPGA Cyclone IV
+          p “高性能，低成本，高稳定性”，FPGA以硬件并行的独特优势引领各行各业的技术改革和发展。Cyclone IV FPGA更是拓展了前一代Cyclone III  FPGA的低功耗优势，降低了内核电压，总功耗相比前一代降低了25％。利用FPGA进行的网络项目开发具有高速而精确的时序特性，同时，以硬件为主导的解决方案卸载掉了MCU对于Ethernet庞大数据处理的负载，从而，使MCU保持高效运转且实现高速实际网络传输。同时，这也避免了MCU受到网络攻击的危险，增加了MCU工作的安全性。如今，FPGA网络工程正如雨后春笋般在市场中大力发展。
+              
+        div.col-md-4
+          img(src="/img/kinetis.jpg",style="height:100px")
+          h2 Freescale K60
+          p “低功耗，可扩展，高精密”，Freescale K60系列MCU具有IEEE1588以太网、全速和高速USB2.0 OTG、硬件解码能力和干预发现能力。芯片从带有256KBflash的100引脚的LQFP封装到1MBflash的256引脚的MAPBGA封装，具有丰富的电路、通信、定时器和控制外围电路。K60使用了飞思卡尔的新的90nm带有独特FlexMemory的薄膜存储器（TFS）闪存技术，引领着工业级MCU的发展方向。而K60的以太网和USB的能力更是在当今“互联网+”的时代中，指引网络技术工程的前进方向。
+     
+    
+     div.jumbotron
+      div.container
+       div.row
+        div.col-md-8
+          h1 保护您网络数据的安全
+          p Net Gap系统通过硬件电路的处理，根据用户提供的白名单，将合法数据包转发给用户，并将非法可疑的数据包丢弃。
+            |以此来保护用户的网络设备不被非法入侵、篡改。并且，Net Gap采用的硬件电路作为网络数据包转发平台，进一步杜绝了软件层面发生的网络数据挟持、篡改，更大程度上地从系统构成上保证了用户的网络数据安全。
+        div.col-md-4(style="text-align: center")
+          img(src="/img/lock.png",style="margin-top:20px;height:200px")
+          
+     div.jumbotron(style="background-color:white")
+      div.container
+        div.row
+        div.col-md-4(style="text-align: center")
+          img(src="/img/net2.png",style="margin-top:20px;height:200px")
+        div.col-md-8
+          h1 局域网之间的数据通信
+          p Net Gap系统通过硬件电路的处理，根据用户指定的方式，将一个局域网段内的数据发送至另一网段。由于Net Gap优越的高速数字电路性能，
+            |整个数据转发的过程都可以通过千兆以太网口高速转发。至此，两个局域网内的数据交互，通过Net Gap系统，变得尤为简洁。
+       
+       
+           
+     script(src="/Js/index.js")
+        
+      
+      
+        
