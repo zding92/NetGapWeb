@@ -57,16 +57,16 @@ $(window).scroll(function(){
      $(selector).animate({
         opacity:'1',
         left: "0px"
-      },"slow");
+      },"800");
  }
  
  //将selector的透明度降为0，并初始化左移
  function comeFromLeftInit(selector){
    $(selector).css("opacity","0");
-   $(selector).css("left","-30px");
+   $(selector).css("left","-50px");
  }
  //将selector的透明度降为0，并初始化右移
  function comeFromRightInit(selector){
    $(selector).css("opacity","0");
-   $(selector).css("left","30px");
+   $(selector).css("left","50px");
  }
