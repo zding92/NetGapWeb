@@ -28,15 +28,14 @@ router.get('/getHardwares', function (req, res) {
 
 router.get('/checkUdpServer', function(req, res, next) {
   console.log("run /view/checkUdpServer"); 
-  // var dataToFront = commonObj.checkUdpServer();
-  // console.log("/startUdpServer Sent to Front"+dataToFront);
-  // res.end(dataToFront);
-    if (global.udpServer!=null){
-      //查看UDP服务器工作状态
-      var dataToFront = commonObj.checkUdpServer();
-      console.log("/checkUdpServer Sent to Front"+dataToFront);
-      res.end(dataToFront);
+  
+  if (global.udpServer!=null){
+    //查看UDP服务器工作状态
+    var dataToFront = commonObj.checkUdpServer();
+    console.log("/checkUdpServer Sent to Front"+dataToFront);
+    res.end(dataToFront);
   }
+  
 });
 
 router.get('/startUdpServer', function(req, res, next) {
