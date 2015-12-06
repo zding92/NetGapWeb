@@ -1,12 +1,18 @@
 $(document).ready(function(){
+  
   $('#indexCarousel').carousel({
     interval: 4000
   })
-  
+   
   comeFromLeftInit("#hash1 .col-md-8"); 
   comeFromRightInit("#hash1 .col-md-4");
   comeFromLeftInit("#hash2 .col-md-4"); 
   comeFromRightInit("#hash2 .col-md-8");
+  
+  $(".btn-udp").click(function(){
+    udpStatus = true;
+    startUdpServer();  
+  })
 })  
 
 var hash1Viewed = false;
@@ -70,3 +76,49 @@ $(window).scroll(function(){
    $(selector).css("opacity","0");
    $(selector).css("left","50px");
  }
+ 
+
+ //开启UDP服务
+ function startUdpServer(){
+   $.ajax({
+        url: "/startUdpServer",
+        type: "GET",
+        success: function(data){
+          //alert(data);
+          var dataObj =JSON.parse(data);
+          if(dataObj[0]=="success"){
+            alert("UDP Server Started");
+            $(".btn-udp").css("display","none");
+            $(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
+            $(".udp-status").css("color","#449d44");
+          }
+         
+        }
+      })
+ }
+ 
+ 
+//function switchNavUdp(flag){
+//    if (flag){
+//      $(".btn-udp").removeClass("btn-success");
+//      $(".btn-udp").addClass("btn-danger");
+//      $(".btn-udp").text("Stop UDP Server");
+//      $(".udp-status").text("UDP Server is Running");
+//      $(".udp-status").css("color","#449d44");
+     
+//    }else{
+//      $(".btn-udp").removeClass("btn-danger");
+//      $(".btn-udp").addClass("btn-success");
+//      $(".btn-udp").text("Run Udp Server");
+//      $(".udp-status").text("Udp Server Stopped");
+//      $(".udp-status").css("color","#c9302c");
+//     //  $.ajax({
+//     //     url: "/closeUdpServer",
+//     //     type: "GET",
+//     //     success: function(){
+//     //       alert("UDP Server Stopped");
+//     //     }
+//     //   })
+     
+//    }
+//  }

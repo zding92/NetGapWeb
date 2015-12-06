@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var udpServer = require('./udpServer.js');
+//var udpServer = require('./udpServer.js');
 
 
 //var udpServerObj = new(udpServer);

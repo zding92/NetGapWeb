@@ -1,11 +1,15 @@
 function udpServer()  { 
-  
+  //服务器UDP端口号
+  var localUdpPort = 41234;
   var dgram = require("dgram");
   var server = dgram.createSocket("udp4");
   var message = new Buffer("Hi");
   var udpData = 'initial';
   var reqinfo = '';
   
+  
+  //PortBinded用于存放UDPServer的Port 
+  var PortBinded;
   //获取服务器IP
   var localIpAdd = getIPAdress();
   //将服务器IP的字符串转换为数组
@@ -16,6 +20,17 @@ function udpServer()  {
   broadcastIpArray[3] = 255;
   console.log("Broadcast ip is:"+broadcastIpArray);
   var broadcastIp = broadcastIpArray.toString();
+  
+  //serverStatus表明目前的服务器工作情况
+  var serverStatus=new Array();
+  serverStatus['status'] = "stopped";
+  serverStatus['address'] = localIpAdd;
+  serverStatus['port'] = localUdpPort;
+  
+  //改变ServerStatusFlag，并将改变完的值返回
+  this.getServerStatus = function(){
+    return serverStatus;
+  }
   
   this.getData = function() {
     return udpData;
@@ -30,6 +45,15 @@ function udpServer()  {
     console.log(reqinfo);
     console.log("ready to broadcast to 255.255.255.255:8080");
     server.send(data, 0, data.length, 8080, "192.168.1.115");  
+  }
+  
+  this.getUdpClientInfo = function(){
+    return reqinfo;
+  }
+  
+  //利用close函数关闭UDP Server
+  this.closeUdpServer = function(){
+    server.close();
   }
   
   server.on("error", function (err) {
@@ -52,7 +76,11 @@ function udpServer()  {
         address.address + ":" + address.port);
   });
   
-  server.bind(41234);
+  this.startUdpServer = function(){
+    server.bind(localUdpPort); 
+    serverStatus['status'] = "running";    
+    console.log("UDP binded to "+localIpAdd+":"+localUdpPort);
+  }
 }
 
 function getIPAdress(){  

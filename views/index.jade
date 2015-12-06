@@ -1,16 +1,17 @@
 doctype html
 html
   head
-    title= title
-    
+    title= title  
     <script src="/Lib/jquery/jquery.min.js"></script>
     <link href="/Lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="/stylesheets/index.css" rel="stylesheet">
     <script src="/Lib/bootstrap/bootstrap.min.js"></script>
-    script(src="/Js/index.js")
+    <link href="/stylesheets/nav.css" rel="stylesheet">    
+    <script src="/Lib/bootstrap/bootstrap.min.js"> </script>
     
-
-      
+    <script> var udpStatus = false;</script>
+    
+       
   body
     div.
       <nav class="navbar navbar-inverse navbar-fixed-top"> 
@@ -28,6 +29,8 @@ html
             <li><a href="/control">Hardware Control</a></li> 
           </ul> 
           <ul class="nav navbar-nav navbar-right">
+            <li><button class="btn btn-success btn-udp">Run Udp Server</button></li>
+            <li style="color:#D9534F" class="udp-status">Udp Server Stopped<li>
             <li class="headUserName">UserName</li> 
             <li><img alt="userIcon" src="/img/userIcon1.jpg"></li>
           </ul> 
@@ -106,7 +109,10 @@ html
         
      footer
       p(style="text-align:center") NetGap Team and ECNU Display Lab © 2015-2016 &nbsp;&nbsp;&nbsp; Designed By ZHANGDING
-           
+     
+     
+     
+     script(src="/Js/index.js")      
      
         
       
