@@ -9,12 +9,29 @@ $(document).ready(function(){
   comeFromLeftInit("#hash2 .col-md-4"); 
   comeFromRightInit("#hash2 .col-md-8");
   
+  //点击开始UDP Server
   $(".btn-udp").click(function(){
     udpStatus = true;
     startUdpServer();  
   })
+  
+  
+  //check UDP server是否已经启动
+	$.ajax({
+		url: "/checkUdpServer",
+		type: "GET",
+		success: function(data){
+	      var dataObj =JSON.parse(data);
+          if(dataObj[1]=="running"){
+            $(".btn-udp").css("display","none");
+            $(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
+            $(".udp-status").css("color","#449d44");
+          }
+		}
+	})
 })  
 
+//表明hash1是否已经显示过
 var hash1Viewed = false;
 var hash2Viewed = false;
 $(window).scroll(function(){
@@ -84,17 +101,18 @@ $(window).scroll(function(){
         url: "/startUdpServer",
         type: "GET",
         success: function(data){
-          //alert(data);
+          
           var dataObj =JSON.parse(data);
+          //后台数据请求成功
           if(dataObj[0]=="success"){
             alert("UDP Server Started");
             $(".btn-udp").css("display","none");
             $(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
             $(".udp-status").css("color","#449d44");
           }
-         
-        }
-      })
+                  
+        }//success
+    })//ajax
  }
  
  

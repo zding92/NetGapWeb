@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var udpServer = require('./udpServer.js');
+var common = require('./common.js');
+var commonObj = new(common);
 
 //var udpServerObj = new(udpServer);
 
@@ -17,14 +19,19 @@ router.get('/startUdpServer', function(req, res, next) {
   //开启全局UDP服务器
   global.udpServer = new(udpServer);
   global.udpServer.startUdpServer();
-
-  var dataToFront = Array();
-  dataToFront[0] = "success";
-  dataToFront[1] = global.udpServer.getServerStatus()['status'];
-  dataToFront[2] = global.udpServer.getServerStatus()['address'];
-  dataToFront[3] = global.udpServer.getServerStatus()['port'];
-  
+  //查看UDP服务器工作状态
+  var dataToFront = commonObj.checkUdpServer();
   console.log("/startUdpServer Sent to Front"+dataToFront);
-  res.end(JSON.stringify(dataToFront));
+  res.end(dataToFront);
+});
+
+router.get('/checkUdpServer', function(req, res, next) {
+  console.log("run the /index/checkUdpServer");
+  if (global.udpServer!=null){
+      //查看UDP服务器工作状态
+      var dataToFront = commonObj.checkUdpServer();
+      console.log("/checkUdpServer Sent to Front"+dataToFront);
+      res.end(dataToFront);
+  }
 });
 module.exports = router;
