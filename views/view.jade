@@ -13,6 +13,11 @@ html
     script(src="/Lib/sweetAlert/sweetalert.min.js")
     link(rel='stylesheet', href='/Lib/sweetAlert/sweetAlert.css')
     
+    link(rel='stylesheet', href='/stylesheets/loading.css')
+    
+    <script> var udpStatus = false;</script>
+    <script> var loadingReady = false;</script>
+    
     <script src="/Js/view.js"></script>
      
   body
@@ -51,5 +56,43 @@ html
         div.col-md-4(style="text-align: center")
           img(src="/img/eye.png",style="margin-top:0px;height:160px")
     
+    <div class="container container-gear" style="text-align:center">
+    <div class="gearbox">
+    <div class="overlay"></div>
+    <div class="gear one">
+    <div class="gear-inner">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    </div>
+    </div>
+    <div class="gear two">
+    <div class="gear-inner">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    </div>
+    </div>
+    <div class="gear three">
+    <div class="gear-inner">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    </div>
+    </div>
+    <div class="gear four large">
+    <div class="gear-inner">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    </div>
+    </div>
+    </div>
+    <h1>Loading UDP Data...</h1>
+    </div>
+
       
         
