@@ -1,6 +1,6 @@
 function udpServer()  { 
   //服务器UDP端口号
-  var localUdpPort = 41234;
+  var localUdpPort = 61018;
   var dgram = require("dgram");
   var server = dgram.createSocket("udp4");
   var message = new Buffer("Hi");
@@ -11,7 +11,8 @@ function udpServer()  {
   //PortBinded用于存放UDPServer的Port 
   var PortBinded;
   //获取服务器IP
-  var localIpAdd = getIPAdress();
+   var localIpAdd = getIPAdress();
+  //var localIpAdd = "172.1.1.144";
   //将服务器IP的字符串转换为数组
   var localIpArray = localIpAdd.split(".");
   console.log("local ip is:"+localIpArray);

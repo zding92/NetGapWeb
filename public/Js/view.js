@@ -47,7 +47,8 @@ $(document).ready(function(){
         success: function(data){
           var dataObj =JSON.parse(data);
           if(dataObj[0]=="success"){
-            alert("UDP Server Started");
+            swal("成功启动UDP Server!", "Udp Server is running at "+dataObj[2]+":"+dataObj[3], "success");
+            
             $(".btn-udp").css("display","none");
             $(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
             $(".udp-status").css("color","#449d44");
