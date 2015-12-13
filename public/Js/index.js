@@ -21,12 +21,14 @@ $(document).ready(function(){
 		url: "/checkUdpServer",
 		type: "GET",
 		success: function(data){
-	      var dataObj =JSON.parse(data);
+      if(data!=''){
+        var dataObj =JSON.parse(data);
           if(dataObj[1]=="running"){
             $(".btn-udp").css("display","none");
             $(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
             $(".udp-status").css("color","#449d44");
           }
+      }	
 		}
 	})
 })  
