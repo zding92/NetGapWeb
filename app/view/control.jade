@@ -54,10 +54,31 @@ html
           p Net Gap系统的硬件能够根据服务器的命令更改工作状态，用户可通过网页配置硬件，使其工作在理想状态
         div.col-md-4(style="text-align: center")
           img(src="/img/tools.png",style="margin-top:0px;height:160px")
+    
+    
     div.container
+    
+      //硬件设备标签页
+      ul#hardwareTabs.nav.nav-tabs
+        li.active
+          a(href="#B1" data-toggle="tab" style="height:40px") Board1
+        li
+          a(href="#B2" data-toggle="tab" style="height:40px") Board2
+
+      
+      div#hardwareTabsContent.tab-content
+        div.tab-pane.fade.in.active#B1
+          p B1
+        div.tab-pane.fade#B2
+          p B2
+        
+      
+    
+    
+    
       form.fileForm#fileForm(method="post",enctype='multipart/form-data',action="/control/uploadFile")
         input#file1(type="file",name="file")
-        button.btn.btn-default#fileUploadBtn
-          提交
+        button.btn.btn-default#fileUploadBtn 提交
+            
       
         

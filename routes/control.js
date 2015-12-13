@@ -24,8 +24,11 @@ router.get('/startUdpServer', function(req, res, next) {
 });
 
 router.post('/uploadFile',function(req,res,next){
-  var dataToFront = controlController.fileUpload(req,res);
-  //res.end(dataToFront);
+  // var dataToFront = controlController.fileUpload(req,res);
+  // res.send("dataToFront");
+  
+  //上传文件
+  controlController.fileUpload(req,res);
   res.render('control', { title: 'Net Gap Control The Hardware' });
 })
 
