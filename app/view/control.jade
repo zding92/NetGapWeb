@@ -3,9 +3,13 @@ html
   head
     title= title
     
-    <script src="/Lib/jquery/jquery.min.js"></script>
+    
+    
     <link href="/Lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="/Lib/jquery/jquery.min.js"></script>
     <link href="/stylesheets/index.css" rel="stylesheet">
+    
     <script src="/Lib/bootstrap/bootstrap.min.js"></script>
     <link href="/stylesheets/nav.css" rel="stylesheet">
     
@@ -16,7 +20,20 @@ html
     //引用ajaxfileupload库
     script(src="/Lib/ajaxfileupload.js")
     
-    <script src="/Js/control.js"></script>
+    //引用bootstrap table库
+    link(rel='stylesheet', href='/Lib/bootstrap-table/bootstrap-table.css')
+    
+    // script(src="/Lib/bootstrap-table/extensions/filter/bootstrap-table-filter.js")
+    
+   
+    
+    script(src="/Lib/bootstrap-table/bootstrap-table.js")
+    //引用中文bootstraptable
+    script(src="/Lib/bootstrap-table/locale/bootstrap-table-zh-CN.js")
+    //引用bootstraptable export功能
+    script(src="/Lib/bootstrap-table/extensions/export/tableExport.js") 
+    script(src="/Lib/bootstrap-table/extensions/export/bootstrap-table-export.js")
+    
     
       
   body
@@ -68,7 +85,27 @@ html
       
       div#hardwareTabsContent.tab-content
         div.tab-pane.fade.in.active#B1
-          p B1
+          table#hardwareTable1(data-show-toggle="true"
+            data-url="__APP__/Admin/UserControl/showAllUser"
+            data-toolbar="#filter-bar"  
+            data-search="true"           
+            data-show-filter="true"
+            data-striped="true"
+            data-sort-name="apply_state" 
+            data-sort-order="desc"
+            data-pagination="true"
+            data-show-export="true")
+            thead
+              tr
+                th(data-field="register" data-width="140" data-align="left" data-sortable="true") Register
+                th(data-field="sourceIP" data-width="140" data-align="left" data-sortable="true") Source IP
+                th(data-field="destinationIP" data-width="140" data-align="left" data-sortable="true") Destination IP
+                th(data-field="operation" data-width="140" data-align="left") Operation
+                
+          
+          
+          
+          
         div.tab-pane.fade#B2
           p B2
         
@@ -79,6 +116,8 @@ html
       form.fileForm#fileForm(method="post",enctype='multipart/form-data',action="/control/uploadFile")
         input#file1(type="file",name="file")
         button.btn.btn-default#fileUploadBtn 提交
+        
+    <script src="/Js/control.js"></script>
             
       
         

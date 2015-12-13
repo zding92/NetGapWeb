@@ -27,7 +27,20 @@ $(document).ready(function(){
     $("#fileForm").submit();
     
   });
+  
+
 });
+
+$(function(){
+  $("#hardwareTable1").bootstrapTable({
+    striped: true,
+		pagination: true,
+		height: 600,
+		pageSize: 20
+  }).on('load-success.bs.table', function (e, data, row){
+    
+  })
+})
 
  //开启UDP服务
  function startUdpServer(){
