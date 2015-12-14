@@ -35,8 +35,8 @@ $(function(){
   $("#hardwareTable1").bootstrapTable({
     striped: true,
 		pagination: true,
-		height: 600,
-		pageSize: 20
+		height: 1000,
+		pageSize: 40
   }).on('load-success.bs.table', function (e, data, row){
     
   })
