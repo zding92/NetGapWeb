@@ -26,7 +26,9 @@ router.get('/startUdpServer', function(req, res, next) {
 router.post('/uploadFile',function(req,res,next){
   //上传文件
   controlController.fileUpload(req,res);
-  res.render('control', { title: 'Net Gap Control The Hardware' });
+  //res.render('control', { title: 'Net Gap Control The Hardware' });
+  res.redirect("./");
+
 })
 
 router.get('/getConfigFile',function(req,res,next){

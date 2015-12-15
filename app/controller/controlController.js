@@ -65,6 +65,11 @@ exports.getConfigFile = function(res,boardNum){
 	var options = {encoding:'utf8',flag:'r'};
 	//创建读取文件流
 	var fileReadStream = fs.createReadStream(fileFullPath,options);
+	fileReadStream.on("error",function(err){
+		console.log("File Open Error For:"+err);
+	})
+	
+	
 	//将读取文件流绑定至逐行读取
 	var rl = readline.createInterface({input:fileReadStream});
 	rl.on('line',function(line){
@@ -80,7 +85,7 @@ exports.getConfigFile = function(res,boardNum){
 			dataLine['destinationIP'] = lineArr[7] + '.' + lineArr[8] + '.'+lineArr[9]+'.'+lineArr[10];
 			dataToFront = dataToFront + addArrToJson(dataLine);
 			dataToFront = dataToFront + ",";
-			console.log("datatofront:"+dataToFront);
+			//console.log("datatofront:"+dataToFront);
 		}		
 		
 		

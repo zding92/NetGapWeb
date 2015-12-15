@@ -85,8 +85,15 @@ html
       
       div#hardwareTabsContent.tab-content
         div.tab-pane.fade.in.active#B1
+        
+          div#custom-toolbar
+            form.fileForm#fileForm(method="post",enctype='multipart/form-data',action="/control/uploadFile")
+              input#file1(type="file",name="file",display="inline",style="display:inline")
+              button.btn.btn-primary#fileUploadBtn 提交配置文件
+            
           table#hardwareTable1(data-show-toggle="true"
-            data-url="/control/getConfigFile?board=1"  
+            data-url="/control/getConfigFile?board=1" 
+            data-toolbar="#custom-toolbar"   
             data-search="true"           
             data-striped="true"
             data-sort-name="register" 
@@ -100,21 +107,11 @@ html
                 th(data-field="destinationIP" data-width="140" data-align="left" data-sortable="true") Destination IP
                 th(data-field="operation" data-width="140" data-align="left") Operation
                 
-          
-          
-          
-          
+         
         div.tab-pane.fade#B2
           p B2
-        
-      
-    
-    
-    
-      form.fileForm#fileForm(method="post",enctype='multipart/form-data',action="/control/uploadFile")
-        input#file1(type="file",name="file")
-        button.btn.btn-default#fileUploadBtn 提交
-        
+    footer
+      p(style="text-align:center") NetGap Team and ECNU Display Lab © 2015-2016 &nbsp;&nbsp;&nbsp; Designed By ZHANGDING    
     <script src="/Js/control.js"></script>
             
       
