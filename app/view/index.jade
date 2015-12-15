@@ -16,32 +16,28 @@ html
     link(rel='stylesheet', href='/Lib/sweetAlert/sweetAlert.css')
        
   body
-    div.
-      <nav class="navbar navbar-inverse navbar-fixed-top"> 
-        <div class="container"> 
-          <!-- Brand and toggle get grouped for better mobile display --> 
-          <div class="navbar-header"> 
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
-          <a class="navbar-brand" href="./">Net Gap</a> 
-          </div> 
-          <!-- Collect the nav links, forms, and other content for toggling --> 
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-          <ul class="nav navbar-nav"> 
-            <li class="active"><a href="./">Index <span class="sr-only">(current)</span></a></li> 
-            <li><a href="/view">Hardware View</a></li>
-            <li><a href="/control">Hardware Control</a></li> 
-          </ul> 
-          <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-success btn-udp">Run Udp Server</button></li>
-            <li style="color:#D9534F" class="udp-status">Udp Server Stopped<li>
-            <li class="headUserName">UserName</li> 
-            <li><img alt="userIcon" src="/img/userIcon1.jpg"></li>
-          </ul> 
-          </div>
-          <!-- /.navbar-collapse --> 
-        </div>
-        <!-- /.container-fluid -->            
-      </nav>
+    div
+      nav.navbar.navbar-inverse.navbar-fixed-top        
+        div.container 
+          div.navbar-header 
+            a.navbar-brand(href="./") Net Gap 
+          u.nav.navbar-nav 
+            li.active
+              a(href="./") Index 
+            li
+              a(href="/view") Hardware View
+            li
+              a(href="/control") Hardware Control
+          
+          ul.nav.navbar-nav.navbar-right
+            li
+              button.btn.btn-success.btn-udp Run Udp Server
+            li.udp-status(style="color:#D9534F") Udp Server Stopped
+            li.headUserName(style="display:none") UserName
+            li
+              img(alt="userIcon" src="/img/userIcon1.jpg"  style="display:none")
+            li.login-btn Login 
+                
     div.carouselDiv
       div.carousel.slide#indexCarousel
         //轮播（Carousel）指标
@@ -111,8 +107,28 @@ html
         
      footer
       p(style="text-align:center") NetGap Team and ECNU Display Lab © 2015-2016 &nbsp;&nbsp;&nbsp; Designed By ZHANGDING
-     
-     
+  
+     div.modal.fade#loginModal(tabindex="-1",role="dialog",aria-labelledby="loginModalLabel",aria-hidden="true")
+      div.modal-dialog
+        div.modal-content
+          div.modal-header
+            button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title#loginModalLabel 登录
+          div.modal-body 
+            div.input-group
+              span.input-group-addon User Name
+              input.form-control(type="text")
+            br
+            br
+            div.input-group
+              span.input-group-addon Password
+              input.form-control(type="text")
+          div.modal-footer
+            button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+            button.btn.btn-primary(type="button") 登录
+    
+      
+            
      
      script(src="/Js/index.js")      
      

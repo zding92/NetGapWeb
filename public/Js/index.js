@@ -31,6 +31,10 @@ $(document).ready(function(){
       }	
 		}
 	})
+  
+  $(".login-btn").click(function(){
+    $("#loginModal").modal('show');
+  })
 })  
 
 //表明hash1是否已经显示过

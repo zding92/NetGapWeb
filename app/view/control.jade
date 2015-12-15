@@ -37,32 +37,28 @@ html
     
       
   body
-    div.
-      <nav class="navbar navbar-inverse navbar-fixed-top"> 
-        <div class="container"> 
-          <!-- Brand and toggle get grouped for better mobile display --> 
-          <div class="navbar-header"> 
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
-          <a class="navbar-brand" href="./">Net Gap</a> 
-          </div> 
-          <!-- Collect the nav links, forms, and other content for toggling --> 
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-          <ul class="nav navbar-nav"> 
-            <li><a href="./">Index <span class="sr-only">(current)</span></a></li> 
-            <li><a href="/view">Hardware View</a></li>
-            <li class="active"><a href="/control">Hardware Control</a></li> 
-          </ul> 
-          <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-success btn-udp">Run Udp Server</button></li>
-            <li style="color:#D9534F" class="udp-status">Udp Server Stopped<li>
-            <li class="headUserName">UserName</li> 
-            <li><img alt="userIcon" src="/img/userIcon1.jpg"></li>
-          </ul> 
-          </div>
-          <!-- /.navbar-collapse --> 
-        </div>
-        <!-- /.container-fluid -->            
-      </nav>
+    div
+      nav.navbar.navbar-inverse.navbar-fixed-top        
+        div.container 
+          div.navbar-header 
+            a.navbar-brand(href="./") Net Gap 
+          u.nav.navbar-nav 
+            li
+              a(href="./") Index 
+            li
+              a(href="/view") Hardware View
+            li.active
+              a(href="/control") Hardware Control
+          
+          ul.nav.navbar-nav.navbar-right
+            li
+              button.btn.btn-success.btn-udp Run Udp Server
+            li.udp-status(style="color:#D9534F") Udp Server Stopped
+            li.headUserName(style="display:none") UserName
+            li
+              img(alt="userIcon" src="/img/userIcon1.jpg"  style="display:none")
+            li.login-btn Login
+            
     div.jumbotron(style="margin-top:65px")
       div.container
        div.row#hash1(name="hash1")
