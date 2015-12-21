@@ -2,13 +2,15 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
 
 var mongoose = require('mongoose');
 // connect the data base.
-mongoose.connect('mongodb://zding@localhost:27017/Netgap');
+mongoose.connect('mongodb://zding@localhost:27017/netgap');
 mongoose.connection.on("open",function(){
   console.log("Connected to MongoDB NetGap");
 })
@@ -31,6 +33,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({secret: 'NETGAPCOOKIESAFECODE'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

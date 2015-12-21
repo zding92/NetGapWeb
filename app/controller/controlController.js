@@ -113,3 +113,4 @@ function addArrToJson(arr){
 	JSONString = JSONString + '}';
 	return(JSONString);
 }
+
