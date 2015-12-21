@@ -7,7 +7,7 @@ var commonController = require('../app/controller/commonController.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Net Gap', udpStatus: "hello"});
+  res.render('index', { title: 'Net Gap', udpStatus: "hello", username:req.session.username});
 });
 
 

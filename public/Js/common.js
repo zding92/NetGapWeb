@@ -35,12 +35,24 @@ function dataHandler(data){
     }
 }
 
+//获取后台的用户相关Session
 function checkUser(){
     $.ajax({
         url: "/checkUser",
         type: "GET",
         success: function(data){
-            alert(data);
+            //alert(data);
+            
+            if(data!="NoUser"){
+                var dataObj = JSON.parse(data);
+                $(".headUserName").text(dataObj.username);
+                $(".headUserIcon").css("display","inline-block");
+                $(".login-btn").css("display","none");
+            }else{ 
+                $(".login-btn").css("display","inline-block");
+                $(".headUserName").text("");
+                $(".headUserIcon").css("display","none");
+            }
         }
     })
 }
