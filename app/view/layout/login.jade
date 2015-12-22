@@ -1,0 +1,24 @@
+div.modal.fade#loginModal(tabindex="-1",role="dialog",aria-labelledby="loginModalLabel",aria-hidden="true")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+                h4.modal-title#loginModalLabel 登录
+            div.modal-body
+                form#loginForm 
+                    br
+                    div.col-md-2
+                    div.input-group.col-md-8
+                        span.input-group-addon User Name
+                        input.form-control(type="text",name="username")
+                    br
+                    br
+                    div.col-md-2
+                    div.input-group.col-md-8
+                        span.input-group-addon Password
+                        input.form-control(type="password",name="password")
+            div.modal-footer
+                button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+                button.btn.btn-primary.loginConfirm(type="button") 登录
+  
+script(src="/Js/common.js")

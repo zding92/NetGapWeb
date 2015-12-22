@@ -1,3 +1,12 @@
+var express = require('express');
+var router = express.Router();
+var URL = require('url');
+
+var indexController = require('../app/controller/indexController');
+var commonController = require('../app/controller/commonController.js');
+
+
+
 function common(){
 	this.checkUdpServer = function(){
 		//取回UDP Server正在工作的状态，是running还是stopped
@@ -9,5 +18,7 @@ function common(){
 		return(JSON.stringify(dataToFront));
 	}
 }
+
+
 
 module.exports = common;

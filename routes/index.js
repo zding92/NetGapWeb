@@ -37,5 +37,12 @@ router.get('/checkUser', function(req,res,next){
     commonController.checkUser(req,res);   
 })
 
+router.get('/logout', function(req,res,next){
+    //清除session
+    req.session.username = null;
+    req.session.role = null;
+    res.end("logout");  
+})
+
 
 module.exports = router;

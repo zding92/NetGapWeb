@@ -54,9 +54,14 @@ html
             li
               button.btn.btn-success.btn-udp Run Udp Server
             li.udp-status(style="color:#D9534F") Udp Server Stopped
-            li.headUserName(style="display:none") UserName
-            li
-              img(alt="userIcon" src="/img/userIcon1.jpg"  style="display:none")
+            
+            li.headUserName 
+            li.headUserIcon
+              img(alt="userIcon" src="/img/userIcon1.jpg")
+            li.logout(style="color:white",title="Logout")
+              span.glyphicon.glyphicon-log-out(aria-hidden="true")
+            
+            
             li.login-btn Login
             
     div.jumbotron(style="margin-top:65px")
@@ -108,6 +113,8 @@ html
           p B2
     footer
       p(style="text-align:center") NetGap Team and ECNU Display Lab © 2015-2016 &nbsp;&nbsp;&nbsp; Designed By ZHANGDING    
+    
+    include ./layout/login.jade
     <script src="/Js/control.js"></script>
             
       
