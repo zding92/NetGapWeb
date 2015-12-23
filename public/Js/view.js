@@ -1,4 +1,4 @@
-$(function(){
+$(function(){   
 	//每隔1秒执行getHardwares
 	setInterval(getHardwares,1000);// 注意函数名没有引号和括弧！ 
 	// 使用setInterval("getHardwares()",1000);会报“缺少对象” 
@@ -6,7 +6,7 @@ $(function(){
 	  
 	checkUdpLoading();
 
-});
+})
 
 function getHardwares(){
 	// console.log("ready");
@@ -17,14 +17,27 @@ function getHardwares(){
 			type: "GET",
 			success: function(callback){
 				console.log(callback);
-				if(loadingReady){
-					$("body").append(callback);
-				}
+                callback = "[{'ip':'192.168.1.1','port':'8080'},{'ip':'192.168.1.2','port':'8081'}]";
+				//JSON对象
+                var callbackJSON;
+                //将后台传来的JSON字符串转换为JSON对象
+                eval("callbackJSON="+callback);
+                console.log(callbackJSON);
+                
+                $(".devList").empty();
+                //对callbackJSON中的每个元素进行操作
+                for (var hardwareCnt in callbackJSON) {
+                   if(loadingReady){
+					   //$("body").append(callback);
+                       
+                       $(".devList").append("<br>Device"+hardwareCnt+"--"+callbackJSON[hardwareCnt].ip+":"+callbackJSON[hardwareCnt].port);
+				    } 
+                }
+                
 				
 			}
 		})
 	}
-
 }
 
 
@@ -37,6 +50,9 @@ $(document).ready(function(){
 			if(data!=''){
 				var dataObj =JSON.parse(data);
 				if(dataObj[1]=="running"){
+                    
+                    udpStatus = true;
+                    
 					$(".btn-udp").css("display","none");
 					$(".udp-status").text("Udp Server is running at "+dataObj[2]+":"+dataObj[3]);
 					$(".udp-status").css("color","#449d44");

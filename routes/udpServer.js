@@ -28,6 +28,24 @@ function udpServer()  {
   serverStatus['address'] = localIpAdd;
   serverStatus['port'] = localUdpPort;
   
+  //dev为每个Client的对象
+  var dev = new Object();
+  dev.ip = "";
+  dev.port = "";
+  //临时存储读到的Client信息，每两秒给devCurrent后清空
+  var devTemp;
+  devTemp.dev = new Array();
+  //实际存在的client每两秒由devTemp更新
+  var devCurrent;
+  devCurrent.dev = new Array();
+  
+//   setTimeout(function() {
+//     document.write('<p>Hello there.</p>');
+//   }, 2000);
+  
+  
+  
+  
   //改变ServerStatusFlag，并将改变完的值返回
   this.getServerStatus = function(){
     return serverStatus;
@@ -63,12 +81,22 @@ function udpServer()  {
   });
 
   server.on("message", function (msg, rinfo) {
+    //        //将devTemp中不存在的Client信息放入devTemp中
+    // //if(devTemp.dev.indexOf(rinfo)<0){
+    //    //devTemp.dev.push(rinfo);
+    //    console.log("devTemp.dev:"); 
+    // //} 
+      
+    
+     
     udpData = msg;
     reqinfo = rinfo;
-    console.log(reqinfo);
+    console.log(reqinfo); 
     console.log("server got: " + msg + " from " +
-      rinfo.address + ":" + rinfo.port);
+      rinfo.address + ":" + rinfo.port);      
     server.send(message, 0, message.length, rinfo.port, rinfo.address);
+    
+    
   });
 
   server.on("listening", function () {
