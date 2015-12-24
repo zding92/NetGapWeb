@@ -1,6 +1,6 @@
 $(function(){   
 	//每隔1秒执行getHardwares
-	setInterval(getHardwares,1000);// 注意函数名没有引号和括弧！ 
+	setInterval(getHardwares,3000);// 注意函数名没有引号和括弧！ 
 	// 使用setInterval("getHardwares()",1000);会报“缺少对象” 
 	
 	  
@@ -16,8 +16,8 @@ function getHardwares(){
 			url: "/view/getHardwares",
 			type: "GET",
 			success: function(callback){
-				console.log(callback);
-                callback = "[{'ip':'192.168.1.1','port':'8080'},{'ip':'192.168.1.2','port':'8081'}]";
+				console.log("callback="+callback);
+                //callback = "[{'ip':'192.168.1.1','port':'8080'},{'ip':'192.168.1.2','port':'8081'}]";
 				//JSON对象
                 var callbackJSON;
                 //将后台传来的JSON字符串转换为JSON对象
@@ -29,7 +29,6 @@ function getHardwares(){
                 for (var hardwareCnt in callbackJSON) {
                    if(loadingReady){
 					   //$("body").append(callback);
-                       
                        $(".devList").append("<br>Device"+hardwareCnt+"--"+callbackJSON[hardwareCnt].ip+":"+callbackJSON[hardwareCnt].port);
 				    } 
                 }

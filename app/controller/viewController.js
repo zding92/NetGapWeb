@@ -16,14 +16,16 @@ exports.checkUdpServer = function(){
 
 exports.getHardwares = function(){
 	if (global.udpServer!=null){
+        //返回量为目前所有的device的json字符串
 		var udpClientInView = global.udpServer.getUdpClientInfo();
 		// 输出 JSON 格式
-		var response = {
-			id:"0001",
-			ip:udpClientInView.address,
-			port:udpClientInView.port
-		};
-		console.log("/view/getHardwares responsed to Front:"+JSON.stringify(response));
-		return(JSON.stringify(response));
+		// var response = {
+		// 	id:"0001",
+		// 	ip:udpClientInView.address,
+		// 	port:udpClientInView.port
+		// };
+		// console.log("/view/getHardwares responsed to Front:"+JSON.stringify(response));
+		//return(JSON.stringify(response));
+        return(udpClientInView);
 	}
 }

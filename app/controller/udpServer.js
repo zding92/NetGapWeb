@@ -36,13 +36,7 @@ function udpServer()  {
   //临时存储读到的Client信息，每两秒给devCurrent后清空
   var devTemp = new Array(); 
   //实际存在的client每两秒由devTemp更新
-  var devCurrent = new Array();
-  //每两秒将devTemp获取到的所有devices赋值给devCurrent，并且清空devTemp等待下一个2秒的接收周期
-  setTimeout(function() {  
-      devCurrent = devTemp;
-      devTemp.splice(0,devTemp.length);
-      console.log("devCurrent:"+devCurrent);
-  }, 2000);
+
   
   
   //改变ServerStatusFlag，并将改变完的值返回
@@ -66,9 +60,23 @@ function udpServer()  {
   }
   
   this.getUdpClientInfo = function(){
-    //return reqinfo;
-    var dataToFront = "{"+devCurrent.join(',')+"}";
+    
+    //var dataToFront = "{"+devCurrent.join(',')+"}";
+    
+    var dataToFront = "[";
+    for (var devTempCnt in devTemp){
+        dataToFront = dataToFront + JSON.stringify(devTemp[devTempCnt])+","
+    }
+    //如果有设备，去除最后一个逗号
+    if(dataToFront != "["){
+       dataToFront = dataToFront.substring(0, dataToFront.length-1); 
+    }
+	
+    dataToFront = dataToFront + "]";
+    console.log("devTemp String 2s:"+dataToFront);
+    devTemp.splice(0,devTemp.length);
     return dataToFront;
+    //return reqinfo;
   }
   
   //利用close函数关闭UDP Server
@@ -90,7 +98,7 @@ function udpServer()  {
     server.send(message, 0, message.length, rinfo.port, rinfo.address);
 
     var client = new Object();
-    client.ip = rinfo.ip;
+    client.ip = rinfo.address;
     client.port = rinfo.port; 
     //读到的Client是否已经在devTemp中
     var isClientInDevTemp = false;
