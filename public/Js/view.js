@@ -30,7 +30,14 @@ function getHardwares(){
                    if(loadingReady){
 					   //$("body").append(callback);
                        $(".devList").append("<br>Device"+hardwareCnt+"--"+callbackJSON[hardwareCnt].ip+":"+callbackJSON[hardwareCnt].port);
-				    } 
+				       
+                    } 
+                }
+                //如果没有device
+                if(callback == "[]"){
+                    $(".nodevice").css("display","block");
+                }else{
+                    $(".nodevice").css("display","none");
                 }
                 
 				

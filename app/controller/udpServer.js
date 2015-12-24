@@ -33,9 +33,9 @@ function udpServer()  {
   var dev = new Object();
   dev.ip = "";
   dev.port = "";
-  //临时存储读到的Client信息，每两秒给devCurrent后清空
+  //临时存储读到的Client信息
   var devTemp = new Array(); 
-  //实际存在的client每两秒由devTemp更新
+
 
   
   
@@ -59,10 +59,12 @@ function udpServer()  {
     server.send(data, 0, data.length, 8080, "192.168.1.115");  
   }
   
+  //前台两秒请求一次
   this.getUdpClientInfo = function(){
     
     //var dataToFront = "{"+devCurrent.join(',')+"}";
     
+    //将devTemp中的对象转成json字符串
     var dataToFront = "[";
     for (var devTempCnt in devTemp){
         dataToFront = dataToFront + JSON.stringify(devTemp[devTempCnt])+","
@@ -70,8 +72,7 @@ function udpServer()  {
     //如果有设备，去除最后一个逗号
     if(dataToFront != "["){
        dataToFront = dataToFront.substring(0, dataToFront.length-1); 
-    }
-	
+    }	
     dataToFront = dataToFront + "]";
     console.log("devTemp String 2s:"+dataToFront);
     devTemp.splice(0,devTemp.length);

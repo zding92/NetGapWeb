@@ -45,7 +45,7 @@ html
               span.glyphicon.glyphicon-log-out(aria-hidden="true")
             li.login-btn Login 
      
-    div.jumbotron(style="margin-top:65px")
+    div.jumbotron(style="margin-top:65px;margin-bottom:0px")
       div.container
        div.row#hash1(name="hash1")
         div.col-md-8
@@ -92,8 +92,17 @@ html
     <h1>Loading UDP Data...</h1>
     </div>
     
+    
+    
+    
+    
+    div.nodevice.container-fluid(style="padding-left:0px;display:none;")
+        img(src="/img/nodevice.png")
+    div.devList.container-fluid
+    
     footer
       p(style="text-align:center") NetGap Team and ECNU Display Lab © 2015-2016 &nbsp;&nbsp;&nbsp; Designed By ZHANGDING
+        
     
     div.modal.fade#loginModal(tabindex="-1",role="dialog",aria-labelledby="loginModalLabel",aria-hidden="true")
         div.modal-dialog
@@ -118,8 +127,6 @@ html
                     button.btn.btn-default(type="button",data-dismiss="modal") 关闭
                     button.btn.btn-primary.loginConfirm(type="button") 登录
     
-    
-    div.devList
     script(src="/Js/common.js")
       
         
