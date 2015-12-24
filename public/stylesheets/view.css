@@ -1,0 +1,128 @@
+body{
+    /*background-color: #E1E1E1;*/
+    background: url(/img/bg1.jpg)
+}
+.card {
+    background-color: rgba(255,255,255,0.5);
+    float: left;
+    height: 200px;
+    width: 310px;
+    padding: .75rem;
+    
+    margin-right: .78rem;
+    margin-bottom: .78rem;
+    border: 0;
+}
+.card-text:last-child {
+    margin-bottom: 0;
+}
+.card-text {
+    color: #818a91;
+    font-size: 85%;
+}
+.card-text1 {
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+.card-text2 {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 0px;
+}
+
+
+
+.loader {
+  position: absolute;
+  margin-top: 68px;
+  margin-left: 60px;
+  width: 175px;
+  height: 100px;
+}
+.loader span {
+  display: block;
+  background: #ccc;
+  width: 7px;
+  height: 10%;
+  border-radius: 14px;
+  margin-right: 5px;
+  float: left;
+  margin-top: 25%;
+}
+.loader span:last-child {
+  margin-right: 0px;
+}
+.loader span:nth-child(1) {
+  animation: load 2.0s 1.4s infinite linear;
+}
+.loader span:nth-child(2) {
+  animation: load 2.0s 1.2s infinite linear;
+}
+.loader span:nth-child(3) {
+  animation: load 2.0s 1s infinite linear;
+}
+.loader span:nth-child(4) {
+  animation: load 2.0s 0.8s infinite linear;
+}
+.loader span:nth-child(5) {
+  animation: load 2.0s 0.6s infinite linear;
+}
+.loader span:nth-child(6) {
+  animation: load 2.0s 0.4s infinite linear;
+}
+.loader span:nth-child(7) {
+  animation: load 2.0s 0.2s infinite linear;
+}
+.loader span:nth-child(8) {
+  animation: load 2.0s 0s infinite linear;
+}
+.loader span:nth-child(9) {
+  animation: load 2.0s 0.2s infinite linear;
+}
+.loader span:nth-child(10) {
+  animation: load 2.0s 0.4s infinite linear;
+}
+.loader span:nth-child(11) {
+  animation: load 2.0s 0.6s infinite linear;
+}
+.loader span:nth-child(12) {
+  animation: load 2.0s 0.8s infinite linear;
+}
+.loader span:nth-child(13) {
+  animation: load 2.0s 1s infinite linear;
+}
+.loader span:nth-child(14) {
+  animation: load 2.0s 1.2s infinite linear;
+}
+.loader span:nth-child(15) {
+  animation: load 2.0s 1.4s infinite linear;
+}
+
+@keyframes load {
+  0% {
+    background: #D1F0FF;
+    margin-top: 25%;
+    height: 10%;
+  }
+  50% {
+    background: #77B3D4;
+    height: 100%;
+    margin-top: 0%;
+  }
+  100% {
+    background: #D1F0FF;
+    height: 10%;
+    margin-top: 25%;
+  }
+}
+
+.shadow{
+   -webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+  -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+  box-shadow:0 0 10px rgba(0, 204, 204, .5); 
+}
+
+
+

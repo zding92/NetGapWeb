@@ -25,12 +25,44 @@ function getHardwares(){
                 console.log(callbackJSON);
                 
                 $(".devList").empty();
+                //$(".devList2 .row").empty();
+                //判断现有出现的设备是否依旧是工作设备，如若不是，则在显示中删除
+                $(".devList2 .row").children().each(function(){    
+                    //此变量代表显示的设备是否为现有设备
+                    var devStillWork = false;
+                    //如果显示设备出现在callbackJSON中，则是现有设备
+                    for(var hardwareCnt in callbackJSON){
+                        if(($(this).attr("ip")==callbackJSON[hardwareCnt].ip) && ($(this).attr("port")==callbackJSON[hardwareCnt].port)){
+                            devStillWork = true;
+                        }
+                    }
+                    if(!devStillWork){
+                        $(this).remove();
+                    }
+                })
                 //对callbackJSON中的每个元素进行操作
                 for (var hardwareCnt in callbackJSON) {
                    if(loadingReady){
 					   //$("body").append(callback);
                        $(".devList").append("<br>Device"+hardwareCnt+"--"+callbackJSON[hardwareCnt].ip+":"+callbackJSON[hardwareCnt].port);
-				       
+                       //判断现有设备是否已经显示
+                       var isExisted = false;
+                       $(".devList2 .row").children().each(function(){
+                           if(($(this).attr("ip")==callbackJSON[hardwareCnt].ip) && ($(this).attr("port")==callbackJSON[hardwareCnt].port)){
+                               isExisted = true;
+                           }
+                       })
+                       //若现有设备未显示，则添加显示
+                       if(!isExisted){
+                          $(".devList2 .row").append(
+                           "<div class='card shadow' ip='"+callbackJSON[hardwareCnt].ip+"'port='"+callbackJSON[hardwareCnt].port+"'>"+
+                                " <div class='loader'><span></span><span></span><span></span><span></span><span></span><span></span><span></span>"+
+                                        "<span></span><span></span> <span></span><span></span><span></span><span></span><span></span><span></span>"+
+                                    "</div>"+
+                                "<p class='card-text1'>"+callbackJSON[hardwareCnt].ip+"</p>"+
+                                "<p class='card-text2'>Port:"+callbackJSON[hardwareCnt].port+"</p>"+
+                           "</div>") 
+                       }       
                     } 
                 }
                 //如果没有device
