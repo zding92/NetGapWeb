@@ -22,17 +22,24 @@ html
     
     //引用bootstrap table库
     link(rel='stylesheet', href='/Lib/bootstrap-table/bootstrap-table.css')
+    script(src="/Lib/bootstrap-table/bootstrap-table.js")
+    script var udpStatus = false;
     
-    // script(src="/Lib/bootstrap-table/extensions/filter/bootstrap-table-filter.js")
+
     
    
     
     script(src="/Lib/bootstrap-table/bootstrap-table.js")
     //引用中文bootstraptable
     script(src="/Lib/bootstrap-table/locale/bootstrap-table-zh-CN.js")
+    //引用bootstraptable editable功能
+    link(rel='stylesheet', href='/Lib/bootstrap-table/extensions/editable/bootstrap-editable.css')
+    script(src="/Lib/bootstrap-table/extensions/editable/bootstrap-editable.js")
+    script(src="/Lib/bootstrap-table/extensions/editable/bootstrap-table-editable.js")
     //引用bootstraptable export功能
-    script(src="/Lib/bootstrap-table/extensions/export/tableExport.js") 
     script(src="/Lib/bootstrap-table/extensions/export/bootstrap-table-export.js")
+    
+    
     
     
       
@@ -89,8 +96,13 @@ html
         
           div#custom-toolbar
             form.fileForm#fileForm(method="post",enctype='multipart/form-data',action="/control/uploadFile")
+              label 配置至
+              select.form-control.control-devlist
+                
+
               input#file1(type="file",name="file",display="inline",style="display:inline")
               button.btn.btn-primary#fileUploadBtn 提交配置文件
+              button.btn.btn-primary#configBtn(style="margin-left:10px") 开始配置
             
           table#hardwareTable1(data-show-toggle="true"
             data-url="/control/getConfigFile?board=1" 
@@ -100,13 +112,15 @@ html
             data-sort-name="register" 
             data-sort-order="desc"
             data-pagination="true"
-            data-show-export="true")
+            data-show-export="true"
+            data-show-refresh="true"
+            clickToSelect="true")
             thead
               tr
                 th(data-field="register" data-width="140" data-align="left" data-sortable="true") Register
                 th(data-field="sourceIP" data-width="140" data-align="left" data-sortable="true") Source IP
                 th(data-field="destinationIP" data-width="140" data-align="left" data-sortable="true") Destination IP
-                th(data-field="operation" data-width="140" data-align="left") Operation
+                th(data-field="operation" data-width="140" data-align="left" data-sortable="true") Operation
                 
          
         div.tab-pane.fade#B2

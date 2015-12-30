@@ -1,12 +1,17 @@
 $(function(){   
 	//每隔1秒执行getHardwares
-	setInterval(getHardwares,3000);// 注意函数名没有引号和括弧！ 
+	var timerView = setInterval(getHardwares,3000);// 注意函数名没有引号和括弧！ 
 	// 使用setInterval("getHardwares()",1000);会报“缺少对象” 
-	
-	  
+    
 	checkUdpLoading();
 
 })
+
+// $(window).bind('beforeunload',function(){
+//         alert("leave?");
+//         clearInterval(timerView);
+//     });
+	  
 
 function getHardwares(){
 	// console.log("ready");
@@ -16,13 +21,13 @@ function getHardwares(){
 			url: "/view/getHardwares",
 			type: "GET",
 			success: function(callback){
-				console.log("callback="+callback);
+				console.log("View callback="+callback);
                 //callback = "[{'ip':'192.168.1.1','port':'8080'},{'ip':'192.168.1.2','port':'8081'}]";
 				//JSON对象
                 var callbackJSON;
                 //将后台传来的JSON字符串转换为JSON对象
                 eval("callbackJSON="+callback);
-                console.log(callbackJSON);
+                console.log("View callbackJSON="+callbackJSON);
                 
                 $(".devList").empty();
                 //$(".devList2 .row").empty();
@@ -144,3 +149,4 @@ $(document).ready(function(){
 		}	
 	}, 3000 )
  }
+ 
